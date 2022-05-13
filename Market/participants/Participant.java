@@ -1,6 +1,6 @@
 package Market.participants;
 
 public interface Participant {
-    double terget = 0;
+    void update(String eventType, double data);
 
 }
