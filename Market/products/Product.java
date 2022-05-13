@@ -9,6 +9,7 @@ public class Product {
     public final String name;
     private final double productionCost;
     public double price;
+    private double margin; // in %
 
     public Product(String name, double productionCost) {
         this.name = name;
@@ -16,8 +17,9 @@ public class Product {
         this.price = productionCost;
     }
 
-    public void calculatePrice(double margin){
+    public void calculatePrice(){
         this.price = productionCost * (1+margin);
+
     }
 }
 

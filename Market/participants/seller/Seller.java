@@ -1,9 +1,11 @@
 package Market.participants.seller;
 
+import Market.products.Product;
+
+import java.util.Map;
+
 public class Seller {
-    private double target;
-    private int soldProducts;
-    private double currentPrice;
-    private double margin;  // in %
+    public Map<Product, Double> productsMap;
+
 
 }
