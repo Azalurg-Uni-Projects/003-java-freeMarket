@@ -19,7 +19,6 @@ public class Game {
         this.bank = new Bank(1000000);
         this.time = time;
         this.publisher = new Publisher("taxes");
-        sellers.add()
     }
 
     public void addSeller(Seller s){

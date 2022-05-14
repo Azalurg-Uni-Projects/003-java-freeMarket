@@ -7,27 +7,20 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-@Getter
-@Setter
-public class Buyer implements Participant {
-    private final double maxTarget;
-    private double target;
-    private ArrayList<Product> wantToBuy;
-    private double taxes;
+
+public class Buyer extends Participant {
+    private final double maxPrice; // in %
 
 
-    public Buyer(double minTarget) {
-        this.maxTarget = minTarget;
-        this.target = minTarget;
-        this.taxes = 0;
+    public Buyer(double maxPrice) {
+        this.maxPrice = maxPrice;
+        this.productsList = new ArrayList<>();
     }
 
     public void addProduct(Product p){
-        wantToBuy.add(p);
+        p.setMargin(maxPrice);
+        productsList.add(p);
     }
 
-    @Override
-    public void update(String eventType, double data) {
-        this.taxes = data;
-    }
+
 }
