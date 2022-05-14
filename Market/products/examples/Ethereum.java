@@ -4,8 +4,8 @@ import Market.products.Product;
 
 public class Ethereum extends Product {
 
-    public Ethereum() {
-        super("Ethereum", 2000);
+    public Ethereum(double margin) {
+        super("Ethereum", 2000, margin);
     }
 
 

@@ -3,7 +3,7 @@ package Market.products.examples;
 import Market.products.Product;
 
 public class Silver extends Product {
-    public Silver() {
-        super("Silver", 20);
+    public Silver(double margin) {
+        super("Silver", 20, margin);
     }
 }

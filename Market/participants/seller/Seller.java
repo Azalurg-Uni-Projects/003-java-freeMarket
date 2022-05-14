@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Seller implements Participant {
-    public Map<Product, Double> productsMap;
+    public Map<String, Product> productsMap;
     private double taxes;
+    private double minMargin;
 
-    public Seller(Product... products){
-        productsMap =  new HashMap<>();
-        for (Product product: products){
-            this.productsMap.put(product, 0.1);
-        }
+    public Seller(double minMargin){
+        this.productsMap =  new HashMap<>();
+        this.minMargin = minMargin;
+
     }
 
     @Override

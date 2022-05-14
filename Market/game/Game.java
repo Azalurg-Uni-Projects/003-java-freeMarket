@@ -15,10 +15,11 @@ public class Game {
     public double dailyTradingVolume = 0;
     public Publisher publisher;
 
-    public Game(int time, int sellersAmount, int buyersAmount) {
+    public Game(int time) {
         this.bank = new Bank(1000000);
         this.time = time;
-        this.publisher = new Publisher("taxes","");
+        this.publisher = new Publisher("taxes");
+        sellers.add()
     }
 
     public void addSeller(Seller s){

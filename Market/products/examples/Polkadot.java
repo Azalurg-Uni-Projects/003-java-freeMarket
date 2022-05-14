@@ -3,7 +3,7 @@ package Market.products.examples;
 import Market.products.Product;
 
 public class Polkadot extends Product {
-    public Polkadot() {
-        super("Polkadot", 10);
+    public Polkadot(double margin) {
+        super("Polkadot", 10, margin);
     }
 }

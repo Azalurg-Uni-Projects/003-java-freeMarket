@@ -4,7 +4,7 @@ import Market.products.Product;
 
 public class Cardano extends Product {
 
-    public Cardano() {
-        super("Cardano", 0.5);
+    public Cardano(double margin) {
+        super("Cardano", 0.5, margin);
     }
 }

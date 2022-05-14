@@ -4,7 +4,7 @@ import Market.products.Product;
 
 public class Gold extends Product {
 
-    public Gold() {
-        super("Gold", 1800);
+    public Gold(double margin) {
+        super("Gold", 1800, margin);
     }
 }
