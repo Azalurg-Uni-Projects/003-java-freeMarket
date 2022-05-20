@@ -22,6 +22,17 @@ public class Product {
         this.transactionDone = false;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productionCost=" + productionCost +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", margin=" + margin +
+                ", transactionDone=" + transactionDone +
+                '}';
+    }
+
     public void setMargin(double margin) {
         this.margin = margin;
         this.calculatePrice();

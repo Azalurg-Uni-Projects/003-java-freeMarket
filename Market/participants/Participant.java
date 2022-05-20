@@ -9,7 +9,7 @@ import java.util.ArrayList;
 @Getter
 @Setter
 abstract public class Participant {
-    public ArrayList<Product> productsList;
+    public ArrayList<Product> productsList = new ArrayList<Product>();
     private double taxes;
 
     public void update(String eventType, double data) {
