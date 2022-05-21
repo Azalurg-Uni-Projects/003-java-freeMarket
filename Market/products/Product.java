@@ -6,11 +6,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Product {
-    public final double productionCost;
-    public final String name;
-    public double price;
-    public double margin; // in %
-    public boolean transactionDone;
+    private final double productionCost;
+    private final String name;
+    private double price;
+    private double margin; // in %
+    private boolean transactionDone;
 
 
     public Product(String name, double productionCost, double margin) {
@@ -22,15 +22,23 @@ public class Product {
         this.transactionDone = false;
     }
 
+    public Product(String name, double productionCost) {
+        this.name = name;
+        this.productionCost = productionCost;
+        this.price = productionCost;
+        this.margin = 0;
+        this.calculatePrice();
+        this.transactionDone = false;
+    }
+
     @Override
     public String toString() {
-        return "Product{" +
+        return "{" +
                 "productionCost=" + productionCost +
-                ", name='" + name + '\'' +
                 ", price=" + price +
                 ", margin=" + margin +
                 ", transactionDone=" + transactionDone +
-                '}';
+                "}\n";
     }
 
     public void setMargin(double margin) {
