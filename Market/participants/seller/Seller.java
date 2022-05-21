@@ -2,31 +2,34 @@ package Market.participants.seller;
 
 import Market.participants.Participant;
 import Market.products.Product;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.Objects;
-
+@Getter
+@Setter
 public class Seller extends Participant {
-    private double minMargin;
+    private final double minMargin;
+    private double earnedMoney;
 
     public Seller(double minMargin) {
-//        this.productsList = new ArrayList<>();
         this.minMargin = minMargin;
-
+        this.earnedMoney = 0;
     }
 
     public void addProduct(Product p){
         p.setMargin(minMargin);
-        productsList.add(p);
+        productHashMap.put(p.getName(), p);
     }
 
-//    public boolean sell(String product_name){
-//        Product to_sell = productsList.stream().findFirst(product -> Objects.equals(product.getName(), product_name));
-//        if(to_sell.getClass() != Product.class){
-//               return false;
-//        }
-//        to_sell.setMargin(to_sell.getMargin() + 0.05);
-//        to_sell.transactionDone = true;
-//        return true;
-//    }
+    public boolean sell(String product_name){
+        Product to_sell = productHashMap.get(product_name);
+        if(to_sell == null){
+               return false;
+        }
+        this.earnedMoney = this.earnedMoney + (to_sell.getPrice() - to_sell.getProductionCost());
+        to_sell.setMargin(to_sell.getMargin() + 0.05);
+        to_sell.setTransactionDone(true);
+        return true;
+    }
 }

@@ -4,12 +4,12 @@ import Market.products.Product;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 @Getter
 @Setter
 abstract public class Participant {
-    public ArrayList<Product> productsList = new ArrayList<Product>();
+    public HashMap<String, Product> productHashMap = new HashMap<String, Product>();
     private double taxes;
 
     public void update(String eventType, double data) {
@@ -18,4 +18,7 @@ abstract public class Participant {
 
     abstract public void addProduct(Product p);
 
+    public void printProductsList() {
+        System.out.println("productsList=\n" + productHashMap);
+    }
 }
