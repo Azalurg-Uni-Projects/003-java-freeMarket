@@ -18,6 +18,5 @@ public class Buyer extends Participant {
         p.setMargin(maxPrice);
         productHashMap.put(p.getName(), p);
     }
-
-
+    //todo implement reset
 }

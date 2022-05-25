@@ -28,8 +28,9 @@ public class Seller extends Participant {
                return false;
         }
         this.earnedMoney = this.earnedMoney + (to_sell.getPrice() - to_sell.getProductionCost());
-        to_sell.setMargin(to_sell.getMargin() + 0.05);
+        to_sell.upMargin(0.008);
         to_sell.setTransactionDone(true);
         return true;
     }
+    //todo implement reset
 }
