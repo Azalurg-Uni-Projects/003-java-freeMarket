@@ -46,6 +46,19 @@ public class Product {
         this.calculatePrice();
     }
 
+    public void upMargin(double margin) {
+        this.margin += margin;
+        this.calculatePrice();
+    }
+
+    public void downMargin(double margin) {
+        this.margin -= margin;
+        this.calculatePrice();
+    }
+
+    public void imSold(){
+        this.transactionDone = true;
+    }
     public void calculatePrice(){
         this.price = productionCost * (1+margin);
 
