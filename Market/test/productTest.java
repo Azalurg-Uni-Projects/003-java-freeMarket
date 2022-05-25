@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class productTrst {
+public class productTest {
     private ProductsFactory pf;
 
     @Before
