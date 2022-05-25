@@ -1,6 +1,8 @@
 package Market.publisher;
 
 import Market.participants.Participant;
+import Market.participants.seller.Seller;
+import Market.products.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +21,14 @@ public class Publisher {
 
     public void subscribe(String eventType, Participant listener) {
         List<Participant> users = listeners.get(eventType);
-        users.add(listener);
+        if (users == null){
+            users = new ArrayList<Participant>();
+            users.add(listener);
+            listeners.put(eventType, users);
+
+        }else{
+            users.add(listener);
+        }
     }
 
     public void unsubscribe(String eventType, Participant listener) {
@@ -27,10 +36,27 @@ public class Publisher {
         users.remove(listener);
     }
 
-    public void notify(String eventType, double data) {
+    public void notify(String eventType, Seller s, Product p) {
         List<Participant> users = listeners.get(eventType);
         for (Participant listener : users) {
-            listener.update(eventType, data);
+           boolean response = listener.updateTransactions(eventType, p.getPrice(), s);
+            if (response){
+                break;
+            }
         }
+    }
+
+    public void notify(String eventType, double taxes) {
+        List<Participant> users = listeners.get(eventType);
+        for (Participant listener : users) {
+            listener.updateTaxes(taxes);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "listeners=" + listeners +
+                '}';
     }
 }
