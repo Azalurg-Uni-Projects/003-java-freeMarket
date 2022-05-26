@@ -12,7 +12,6 @@ public class ParticipantBuilder {
     public Seller seller(double minMargin, Product... products) {
         Seller s = new Seller(minMargin);
         for(Product p: products){
-            p.setMargin(minMargin);
             s.addProduct(p);
         }
         return s;
@@ -21,7 +20,6 @@ public class ParticipantBuilder {
     public Buyer builder(double maxPrice, Product... products){
         Buyer b = new Buyer(maxPrice);
         for(Product p: products){
-            p.setMargin(maxPrice);
             b.addProduct(p);
         }
         return b;

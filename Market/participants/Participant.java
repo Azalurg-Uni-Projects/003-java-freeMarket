@@ -20,22 +20,6 @@ abstract public class Participant {
         this.margin = primeMargin;
     }
 
-    public boolean updateTransactions(String product_name, Double price, Seller seller){
-        //check if want to buy
-        Product product = productHashMap.get(product_name);
-        if (product != null){
-            if (product.getPrice() > price && !product.isTransactionDone()){
-                //buy it
-                seller.sell(product_name);
-                product.downMargin(0.01);
-                product.imSold();
-                productHashMap.replace(product_name, product);
-                return true;
-            }
-        }
-        // todo Move it to buyer
-        return false;
-    }
 
     public void addProduct(Product p){
         p.setMargin(margin);

@@ -2,12 +2,8 @@ package Market.main;
 
 import Market.participants.buyer.Buyer;
 import Market.participants.seller.Seller;
-import Market.products.Product;
 import Market.products.ProductsFactory;
-import Market.products.examples.Bitcoin;
-import Market.publisher.Publisher;
-
-import java.util.ArrayList;
+import Market.publisher.MarketPublisher;
 
 public class Main {
     public static void main(String[] args){
@@ -16,7 +12,7 @@ public class Main {
         s.addProduct(productsFactory.getProduct("Silver"));
         s.printProductsList();
         // ===========================
-        Publisher publisher = new Publisher();
+        MarketPublisher publisher = new MarketPublisher();
         Buyer b1 = new Buyer(1);
         b1.addProduct(productsFactory.getProduct("Silver"));
         publisher.subscribe("Silver", b1);
