@@ -7,16 +7,28 @@ import java.util.ArrayList;
 
 
 public class Buyer extends Participant {
-    private final double maxPrice; // in %
 
-
-    public Buyer(double maxPrice) {
-        this.maxPrice = maxPrice;
+    public Buyer(double primeMargin) {
+        super(primeMargin);
     }
 
-    public void addProduct(Product p){
-        p.setMargin(maxPrice);
-        productHashMap.put(p.getName(), p);
+    @Override
+    public void dayEnd() {
+        productHashMap.forEach((key, value) -> {
+            if (!value.isTransactionDone() && value.getMargin() < margin){
+                value.upMargin(0.01);
+            }
+            value.setTransactionDone(false);
+        });
     }
-    //todo implement reset
+
+    @Override
+    public void monthEnd() {
+
+    }
+
+    @Override
+    public void calculateMargin() {
+        margin = primeMargin - taxes;
+    }
 }
