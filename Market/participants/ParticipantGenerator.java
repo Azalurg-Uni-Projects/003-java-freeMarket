@@ -38,6 +38,17 @@ public class ParticipantGenerator {
     }
 
     public ArrayList<Buyer> generateBuyers(int amount){
-        return new ArrayList<>();
+        ArrayList<Buyer> result = new ArrayList<>();
+        for(int i = 0; i < amount; i++){
+            Collections.shuffle(items);
+            Integer amount_of_items = random.nextInt(2, 7);
+            Double primeMargin = Math.round(random.nextDouble()*100.0) / 100.0 + 0.1;
+            Buyer buyer = new Buyer(primeMargin);
+            for(int j = 0; j<amount_of_items; j++){
+                buyer.addProduct(productsFactory.getProduct(items.get(j)));
+            }
+            result.add(buyer);
+        }
+        return result;
     }
 }
