@@ -22,6 +22,16 @@ public class Seller extends Participant {
         productHashMap.put(p.getName(), p);
     }
 
+    @Override
+    public void dayEnd() {
+        productHashMap.forEach((key, value) -> {
+            if (!value.isTransactionDone() && value.getMargin() > minMargin){
+                value.downMargin(0.002);
+            }
+            value.setTransactionDone(false);
+        });
+    }
+
     public boolean sell(String product_name){
         Product to_sell = productHashMap.get(product_name);
         if(to_sell == null){
@@ -32,5 +42,4 @@ public class Seller extends Participant {
         to_sell.setTransactionDone(true);
         return true;
     }
-    //todo implement reset
 }

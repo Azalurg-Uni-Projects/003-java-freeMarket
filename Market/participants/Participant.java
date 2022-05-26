@@ -35,6 +35,9 @@ abstract public class Participant {
     }
 
     abstract public void addProduct(Product p);
+    abstract public void dayEnd();
+
+    abstract public void monthEnd();
 
     public void printProductsList() {
         System.out.println("productsList=\n" + productHashMap);
