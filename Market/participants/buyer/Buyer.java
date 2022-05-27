@@ -13,11 +13,11 @@ public class Buyer extends Participant {
         super(primeMargin);
     }
 
-    public boolean updateTransactions(String product_name, Double price, Seller seller){
+    public boolean updateTransactions(String product_name, Double price, Seller seller) {
         //check if want to buy
         Product product = productHashMap.get(product_name);
-        if (product != null){
-            if (product.getPrice() > price && !product.isTransactionDone()){
+        if (product != null) {
+            if (product.getPrice() > price && !product.isTransactionDone()) {
                 //buy it
                 seller.sell(product_name);
                 product.downMargin(0.01);
@@ -29,10 +29,11 @@ public class Buyer extends Participant {
         // todo Move it to buyer
         return false;
     }
+
     @Override
     public void dayEnd() {
         productHashMap.forEach((key, value) -> {
-            if (!value.isTransactionDone() && value.getMargin() < margin){
+            if (!value.isTransactionDone() && value.getMargin() < margin) {
                 value.upMargin(0.01);
             }
             value.setTransactionDone(false);

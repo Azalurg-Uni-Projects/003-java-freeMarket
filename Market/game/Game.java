@@ -16,65 +16,64 @@ public class Game {
     private final int days;
     private final int months;
 
-    private ArrayList<Seller> sellers;
-    private ArrayList<Buyer> buyers;
-    private MarketPublisher marketPublisher;
-    private TaxesPublisher taxesPublisher;
+    private final ArrayList<Seller> sellers;
+    private final ArrayList<Buyer> buyers;
+    private final MarketPublisher marketPublisher;
 
     public Game(int buyers_amount, int sellers_amount, int bank_target, int days, int months) {
         this.days = days;
         this.months = months;
-        this.taxesPublisher = new TaxesPublisher();
+        TaxesPublisher taxesPublisher = new TaxesPublisher();
         this.marketPublisher = new MarketPublisher();
         ParticipantGenerator pg = new ParticipantGenerator();
 
-        this.bank = new Bank(bank_target, this.taxesPublisher);
+        this.bank = new Bank(bank_target, taxesPublisher);
         this.sellers = pg.generateSellers(sellers_amount);
         this.buyers = pg.generateBuyers(buyers_amount);
         // Preparation
-        for(Buyer buyer : buyers){
-            for(String product_name: buyer.getProductHashMap().keySet()){
+        for (Buyer buyer : buyers) {
+            for (String product_name : buyer.getProductHashMap().keySet()) {
                 marketPublisher.subscribe(product_name, buyer);
                 taxesPublisher.subscribe(buyer);
             }
         }
-        for(Seller seller : sellers){
+        for (Seller seller : sellers) {
             taxesPublisher.subscribe(seller);
         }
     }
 
-    public void run(){
-        for( int m = 0; m < months; m++){
+    public void run() {
+        for (int m = 0; m < months; m++) {
             // Do at beginning of every month
             bank.propagateTaxes();
             Collections.shuffle(sellers);
             // todo shuffle buyers in publisher
-            for(int d = 0; d < days; d++){
-                for(Seller seller : sellers){
-                    for(Product product : seller.getProductHashMap().values()) {
+            for (int d = 0; d < days; d++) {
+                for (Seller seller : sellers) {
+                    for (Product product : seller.getProductHashMap().values()) {
                         marketPublisher.notify(product.getName(), seller, product);
                     }
                 }
-               dayEnd();
+                dayEnd();
             }
             monthEnd();
         }
     }
 
-    private void dayEnd(){
-        for(Seller seller :sellers){
+    private void dayEnd() {
+        for (Seller seller : sellers) {
             seller.dayEnd();
         }
-        for(Buyer buyer :buyers){
+        for (Buyer buyer : buyers) {
             buyer.dayEnd();
         }
     }
 
-    private void monthEnd(){
-        for(Buyer buyer :buyers){
+    private void monthEnd() {
+        for (Buyer buyer : buyers) {
             buyer.monthEnd();
         }
-        for(Seller seller:sellers) {
+        for (Seller seller : sellers) {
             bank.collectTaxes(seller);
             seller.monthEnd();
         }
@@ -82,15 +81,11 @@ public class Game {
         bank.monthEnd();
     }
 
-    public void addSeller(Seller s){
+    public void addSeller(Seller s) {
         sellers.add(s);
     }
 
-    public void addBuyer(Buyer b){
+    public void addBuyer(Buyer b) {
         buyers.add(b);
-    }
-
-    public void start(){
-
     }
 }

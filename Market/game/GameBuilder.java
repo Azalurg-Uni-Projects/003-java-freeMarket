@@ -3,7 +3,7 @@ package Market.game;
 public class GameBuilder {
     private int buyers_amount = 20;
     private int sellers_amount = 10;
-    private int bank_target = 10000;
+    private int bank_target = 20000;
     private int days = 30;
     private int months = 12;
 

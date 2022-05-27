@@ -15,9 +15,9 @@ public class Seller extends Participant {
         this.earnedMoney = 0;
     }
 
-    public boolean sell(String product_name){
+    public boolean sell(String product_name) {
         Product to_sell = productHashMap.get(product_name);
-        if(to_sell == null){
+        if (to_sell == null) {
             return false;
         }
         this.earnedMoney = this.earnedMoney + (to_sell.getPrice() - to_sell.getProductionCost());
@@ -29,7 +29,7 @@ public class Seller extends Participant {
     @Override
     public void dayEnd() {
         productHashMap.forEach((key, value) -> {
-            if (!value.isTransactionDone() && value.getMargin() > margin){
+            if (!value.isTransactionDone() && value.getMargin() > margin) {
                 value.downMargin(0.002);
             }
             value.setTransactionDone(false);

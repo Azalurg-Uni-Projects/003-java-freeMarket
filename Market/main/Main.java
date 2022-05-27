@@ -8,7 +8,7 @@ import Market.products.ProductsFactory;
 import Market.publisher.MarketPublisher;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //        ProductsFactory productsFactory = new ProductsFactory();
 //        Seller s = new Seller(0.1);;
 //        s.addProduct(productsFactory.getProduct("Silver"));
@@ -34,7 +34,7 @@ public class Main {
 //        s.printProductsList();
 
         GameBuilder gameBuilder = new GameBuilder();
-        gameBuilder.setMonths(5*12);
+        gameBuilder.setMonths(5 * 12);
         gameBuilder.setBuyers_amount(1000);
         gameBuilder.setSellers_amount(100);
         Game game = gameBuilder.createGame();

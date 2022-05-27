@@ -21,12 +21,12 @@ public class MarketPublisher {
 
     public void subscribe(String goodName, Buyer listener) {
         List<Buyer> buyers = listeners.get(goodName);
-        if (buyers == null){
+        if (buyers == null) {
             buyers = new ArrayList<Buyer>();
             buyers.add(listener);
             listeners.put(goodName, buyers);
 
-        }else{
+        } else {
             buyers.add(listener);
         }
     }
@@ -39,8 +39,8 @@ public class MarketPublisher {
     public void notify(String goodName, Seller seller, Product product) {
         List<Buyer> buyers = listeners.get(goodName);
         for (Buyer listener : buyers) {
-           boolean response = listener.updateTransactions(goodName, product.getPrice(), seller);
-            if (response){
+            boolean response = listener.updateTransactions(goodName, product.getPrice(), seller);
+            if (response) {
                 break;
             }
         }

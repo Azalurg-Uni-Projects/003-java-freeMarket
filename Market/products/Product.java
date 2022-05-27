@@ -56,11 +56,12 @@ public class Product {
         this.calculatePrice();
     }
 
-    public void imSold(){
+    public void imSold() {
         this.transactionDone = true;
     }
-    public void calculatePrice(){
-        this.price = productionCost * (1+margin);
+
+    public void calculatePrice() {
+        this.price = productionCost * (1 + margin);
 
     }
 }

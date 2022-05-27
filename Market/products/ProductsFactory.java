@@ -25,7 +25,7 @@ public class ProductsFactory {
         };
     }
 
-    public Product makeProduct(String name, Double productionCost){
+    public Product makeProduct(String name, Double productionCost) {
         return new Product(name, productionCost);
     }
 }
