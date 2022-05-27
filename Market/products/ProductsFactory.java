@@ -1,6 +1,7 @@
 package Market.products;
 
 public class ProductsFactory {
+
     public Product getProduct(String name) {
         return switch (name) {
             case "Gold" -> new Product("Gold", 1800);

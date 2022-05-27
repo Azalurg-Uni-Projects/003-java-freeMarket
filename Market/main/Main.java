@@ -34,9 +34,6 @@ public class Main {
 //        s.printProductsList();
 
         GameBuilder gameBuilder = new GameBuilder();
-        gameBuilder.setMonths(5 * 12);
-        gameBuilder.setBuyers_amount(1000);
-        gameBuilder.setSellers_amount(100);
         Game game = gameBuilder.createGame();
         game.run();
 

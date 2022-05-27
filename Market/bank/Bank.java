@@ -12,7 +12,7 @@ public class Bank {
 
     public Bank(double target, TaxesPublisher taxesPublisher) {
         this.target = target;
-        this.taxes = 0.05;
+        this.taxes = 0.1;
         this.lastIncome = 0;
         this.income = 0;
         this.taxesPublisher = taxesPublisher;
@@ -42,7 +42,7 @@ public class Bank {
     }
 
     public void monthEnd() {
-        System.out.println("This month I collected " + Math.round(income) + " $, tax level " + taxes);
+        System.out.println("This month I collected " + Math.round(income) + " $, tax level " + Math.round(taxes*1000.0)/10.0 + "%");
         this.income = 0;
     }
 }
